@@ -105,6 +105,10 @@ img {
   text-align: center;
 }
 
+.loader::after {
+  content: "Loading images, please wait...";
+}
+
 /* Галерея */
 .gallery {
   display: grid;

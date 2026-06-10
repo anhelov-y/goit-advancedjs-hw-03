@@ -4,13 +4,18 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 const galleryContainer = document.querySelector('.gallery');
 const loaderElement = document.querySelector('.loader');
 
+// Ініціалізація SimpleLightbox
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
 
+if (loaderElement) {
+  loaderElement.classList.add('is-hidden');
+}
+
 /**
- * @param {Array} images  - Масив об'єктів зображень від Pixabay API
+ * @param {Array} images - Масив об'єктів зображень від Pixabay API
  */
 export function createGallery(images) {
   const markup = images
@@ -33,10 +38,10 @@ export function createGallery(images) {
 
   galleryContainer.insertAdjacentHTML('beforeend', markup);
 
+  // Оновлюємо галерею для нових зображень
   lightbox.refresh();
 }
 
-/* Очищає вміст контейнера галереї перед новим запитом. */
 export function clearGallery() {
   galleryContainer.innerHTML = '';
 }
